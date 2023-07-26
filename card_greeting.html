@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Happy Birthday Tecaa</title>
+  <link rel="shortcut icon" href="/328145494_1134147813922467_4375431707210221288_n.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      /* background-color: #f3f3f3; */
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    .background-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://media.giphy.com/media/llaQj0DwJhWb8ldTFV/giphy.gif');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      animation: backgroundFade 10s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes backgroundFade {}
+
+    .card {
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: justify;
+      display: none;
+      animation-duration: 1s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card.active {
+      display: block;
+      animation-name: fadeIn;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .birthday-icon {
+      font-size: 30px;
+      color: #f8f8f8;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(-10px);
+      }
+
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .tab {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 99;
+    }
+
+    .tab-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    .tab-btn i {
+      color: #333;
+    }
+
+    .card-border {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .card-border::before,
+    .card-border::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, red, yellow, lime, aqua, blue, fuchsia, red);
+      z-index: -1;
+    }
+
+    .card-border::before {
+      top: 0;
+      animation: neon-glow 5s linear infinite;
+    }
+
+    .card-border::after {
+      bottom: 0;
+      animation: neon-glow-reverse 5s linear infinite;
+    }
+
+    @keyframes neon-glow {
+      0% {
+        left: -100%;
+      }
+
+      100% {
+        left: 100%;
+      }
+    }
+
+    @keyframes neon-glow-reverse {
+      0% {
+        right: -100%;
+      }
+
+      100% {
+        right: 100%;
+      }
+    }
+
+    .open-card-btn {
+      display: none;
+      position: fixed;
+      transform: translate(-50%, -50%);
+      z-index: 99;
+      bottom: 20px;
+    }
+
+    .btn-custom {
+      background-color: #EFE1D1;
+      border-color: #EFE1D1;
+      color: #fff;
+    }
+
+    .btn-custom:hover {
+      background-color: #ac998c;
+      border-color: #D8C4B7;
+      color: #fff;
+    }
+
+    /* Gaya khusus untuk modal video */
+    #videoModal .modal-dialog {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    #videoModal .modal-content {
+      max-width: 800px;
+      width: 90%;
+    }
+
+    #videoModal .modal-body {
+      text-align: center;
+    }
+
+    /* Ukuran video */
+    #videoPlayer {
+      max-width: 512px;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Responsif untuk perangkat seluler */
+    @media (max-width: 767px) {
+      #videoModal .modal-content {
+        width: 95%;
+      }
+
+      #videoPlayer {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .fade-in {
+      animation: fadeInAnimation 2s ease forwards;
+    }
+
+    @keyframes fadeInAnimation {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+
+</head>
+
+<body class="fade-in">
+
+  <!-- NANTI SAJALAHH. -->
+  <audio id="audioPlayer" autoplay src="/Happy Birthday_kor.mp3" type="audio/mpeg"></audio>
+
+  <div class="background-animation"></div>
+
+
+
+  <div class="container d-flex justify-content-center align-items-center h-50 mt-5 pt-5">
+    <div class="card shadow card-border active animate__animated animate__fadeIn text-white mt-5" id="card1"
+      style="background-color: #A78295;">
+      <div class="card-header">
+        <a type="button" class="btn float-end minimize-btn"><i class="text-white fa-regular fa-window-minimize"></i></a>
+        <h4 class="card-title"></h4>
+
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Dear Tesa</h5>
+
+
+        <button type="button" class="btn btn-light float-end" id="nextBtn">Lanjut</button>
+
+      </div>
+    </div>
+
+
+    <div class="card shadow card-border animate__animated text-white" id="card2" style="background-color: #A78295;">
+      <div class="card-header">
+        <button type="button" class="btn float-end minimize-btn"><i
+            class="text-white fa-regular fa-window-minimize"></i></button>
+        <h5 class="card-title">Dialog</h5>
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">HBD & Happy Anniversary 1 Year<i class=" mx-3 fas fa-birthday-cake birthday-icon"></i>
+        </h5>
+        <p class="card-text">Happy Birthday kesayangan Yostri dan kesayangannya BTS. Wish u all the best babe.
+          Biar gak sepi-sepi amat ni website lagunya b su auto play :)
+          <!-- <button type="button" class="btn btn-outline-light"></button> -->
+        <p class="fw-bold">Music Control</p>
+        <div class="tab-btn" id="tabBtnMusic">
+          <i class="fas fa-play" id="playBtn"></i>
+        </div>
+
+        </p>
+
+        <button type="button" class="btn btn-light float-end" id="nextBtnToCard3">Lanjut</button>
+        <button type="button" class="btn btn-light float-end mx-2" id="backBtn">Kembali</button>
+
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card shadow card-border animate__animated text-white" id="card3" style="background-color: #A78295;">
+      <div class="card-header">
+        <button type="button" class="btn float-end minimize-btn"><i
+            class="text-white fa-regular fa-window-minimize"></i></button>
+        <h5 class="card-title">Dialog-Part 2</h5>
+      </div>
+
+      <div class="card-body">
+        <!-- <h5 class="card-title"><i class=" mx-3 fas fa-birthday-cake birthday-icon"></i></h5> -->
+        <p class="card-text">Sonde terasa su 1 tahun jadian dan umur juga nambah 1 tahun. banyak proses yang ktng
+          lewatin mulai dari yg sweet butter sampai ke bitter butter. Belajar menyesuaikan diri satu sama lain, belajar
+          untuk tau apa yang disukai dan juga sebaliknya.
+
+          <!-- <button type="button" class="btn btn-outline-light"></button> -->
+
+        </p>
+
+        <button type="button" class="btn btn-light float-end" id="nextBtnToCard4">Lanjut</button>
+        <button type="button" class="btn btn-light float-end mx-2" id="backBtnToCard2">Kembali</button>
+
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="card shadow card-border animate__animated text-white" id="card4" style="background-color: #A78295;">
+      <div class="card-header">
+        <button type="button" class="btn float-end minimize-btn"><i
+            class="text-white fa-regular fa-window-minimize"></i></button>
+        <h5 class="card-title">Dialog-Part 3 - Agk panjang 😃 </h5>
+      </div>
+
+      <div class="card-body">
+        <!-- <h5 class="card-title"><i class=" mx-3 fas fa-birthday-cake birthday-icon"></i></h5> -->
+        <p> yahhh.. setidaknya dalam setahun ini b juga jadi tau lu sn suka minum air panas
+          dan yang jadi PR tingkat kesulitan menengah adalah b harus tau lu <span class="fw-bold">suka daging ayam kfc
+            paha atas atau bawah</span>
+        </p>
+        </p>
+        dan setidaknya lu tau b pu sifat krmna, sebaliknya juga b tau lu pu sifat krmna. hakekat dari semua itu adalah
+        ktng saling
+        memahami dan mencintai apa yang ada karena memang tidak ada cewek atau cowok yang sempurna. azek :"
+        </p>
+        <p>
+          Tesa su lebih dari apapun itu kok 💞 . love u really babe.
+        </p>
+
+
+        <button type="button" class="btn btn-light float-end" id="nextBtnToCard5">Lanjut</button>
+        <button type="button" class="btn btn-light float-end mx-2" id="backBtnToCard3">Kembali</button>
+
+      </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="card shadow card-border animate__animated text-white" id="card5" style="background-color: #A78295;">
+      <div class="card-header">
+        <button type="button" class="btn float-end minimize-btn"><i
+            class="text-white fa-regular fa-window-minimize"></i></button>
+        <h5 class="card-title">Epilog</h5>
+      </div>
+
+      <div class="card-body">
+        <!-- <h5 class="card-title"><i class=" mx-3 fas fa-birthday-cake birthday-icon"></i></h5> -->
+        <p>
+          Dan setelah buka kartu ke kartu, tibalah akhir dari kartu ini menuju kartu utama
+          dan ucapan HBD dari mystery people yang ada dibawah. jangan lupa buka videonya dulu baru lanjut:v
+        </p>
+
+        <button type="button" class="btn btn-light float-start" id="playVideoBtn">
+          <i class="fas fa-play mx-2"></i>Video
+        </button>
+
+        <button type="button" class="btn btn-light float-end" id="nextBtnMain">Lanjut</button>
+        <button type="button" class="btn btn-light float-end mx-2" id="backBtnToCard4">Kembali</button>
+      </div>
+    </div>
+
+    <!-- CARD Main -->
+    <div class="card shadow card-border animate__animated text-white" id="cardMain" style="background-color: #A78295;">
+      <div class="card-header">
+        <button type="button" class="btn float-end minimize-btn"><i
+            class="text-white fa-regular fa-window-minimize"></i></button>
+        <h5 class="card-title">Main Menu</h5>
+      </div>
+
+      <div class="card-body">
+
+        <!-- <button type="button" class="btn btn-dark">Menu Utama</button> -->
+        <a href="/utama.html" class="btn btn-dark text-center">Menu utama</a>
+        <br>
+
+        <div class="float-end">
+          <button type="button" class="btn btn-light mx-2" id="backBtnToCard5">Kembali</button>
+          <!-- <button type="button" class="btn btn-light" id="nextBtnMain">Lanjut</button> -->
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="videoModalLabel">Tadaaa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body align-content-center justify-content-center">
+          <video id="videoPlayer" controls>
+            <source src="/BTS Singing Happy Birthday for Army 💜.mp4" type=video/mp4>
+            Maaf, browser Anda tidak mendukung pemutaran video.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab">
+    <div class="tab-btn" id="tabBtn">
+      <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+        <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+        <path
+          d="M160 32c-35.3 0-64 28.7-64 64V320c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H160zM396 138.7l96 144c4.9 7.4 5.4 16.8 1.2 24.6S480.9 320 472 320H328 280 200c-9.2 0-17.6-5.3-21.6-13.6s-2.9-18.2 2.9-25.4l64-80c4.6-5.7 11.4-9 18.7-9s14.2 3.3 18.7 9l17.3 21.6 56-84C360.5 132 368 128 376 128s15.5 4 20 10.7zM192 128a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM48 120c0-13.3-10.7-24-24-24S0 106.7 0 120V344c0 75.1 60.9 136 136 136H456c13.3 0 24-10.7 24-24s-10.7-24-24-24H136c-48.6 0-88-39.4-88-88V120z" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="tab mt-5">
+    <div class="tab-btn" id="tabBtnShowTab">
+      <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+        <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+        <path
+          d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z" />
+      </svg>
+    </div>
+  </div>
+  <div class="container d-flex justify-content-center align-items-center h-50">
+    <button type="button" class="btn btn-custom open-card-btn text-dark fw-bold" id="openCardBtn">Buka Card 1</button>
+  </div>
+  <!-- <div class="tab mt-5">
+    <div class="tab-btn" id="tabBtnMusic">
+      <i class="fas fa-chevron-up"></i>
+    </div>
+  </div> -->
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Ambil elemen-elemen yang diperlukan
+    const playVideoBtn = document.getElementById('playVideoBtn');
+    const videoModal = new bootstrap.Modal(document.getElementById('videoModal'));
+    const videoPlayer = document.getElementById('videoPlayer');
+
+    // Tambahkan event listener untuk tombol putar video
+    playVideoBtn.addEventListener('click', () => {
+      videoModal.show();
+      videoPlayer.play();
+    });
+
+    // Tambahkan event listener untuk menutup modal dan pause video saat modal ditutup
+    videoModal._element.addEventListener('hidden.bs.modal', () => {
+      videoPlayer.pause();
+    });
+  </script>
+
+  <script>
+    // Ambil elemen-elemen yang diperlukan
+    const nextBtn = document.getElementById('nextBtn'); //to card 2
+    const nextBtnToCard3 = document.getElementById('nextBtnToCard3');
+    const nextBtnToCard4 = document.getElementById('nextBtnToCard4');
+    const nextBtnToCard5 = document.getElementById('nextBtnToCard5');
+    const nextBtnMain = document.getElementById('nextBtnMain');
+
+    //variabel to get ID.
+    const backBtn = document.getElementById('backBtn');
+    const backBtnToCard2 = document.getElementById('backBtnToCard2');
+    const backBtnToCard3 = document.getElementById('backBtnToCard3');
+    const backBtnToCard4 = document.getElementById('backBtnToCard4');
+    const backBtnToCard5 = document.getElementById('backBtnToCard5');
+
+    const minimizeBtns = document.querySelectorAll('.minimize-btn');
+
+    const card1 = document.getElementById('card1');
+    const card2 = document.getElementById('card2');
+    const card3 = document.getElementById('card3');
+    const card4 = document.getElementById('card4');
+    const card5 = document.getElementById('card5');
+    const cardMain = document.getElementById('cardMain');
+
+    const tabBtn = document.getElementById('tabBtn');
+
+    const tabBtnShowTab = document.getElementById('tabBtnShowTab');
+    const backgroundAnimation = document.querySelector('.background-animation');
+
+    // Array dengan URL gif latar belakang yang berbeda
+    const backgroundGifs = [
+      'https://media.giphy.com/media/llaQj0DwJhWb8ldTFV/giphy.gif',
+      'https://media.giphy.com/media/3o6wr95hGglQNbaKHu/giphy.gif',
+      'https://media.giphy.com/media/1h9SBMqWOhjmxEVqoe/giphy.gif',
+      'https://media.giphy.com/media/kaaL254GJo3ISzodAX/giphy.gif',
+      // 'https://media.giphy.com/media/3rSWuLkUMtd47lxQoJ/giphy.gif',
+      'https://media.giphy.com/media/5zde0xR0aN25mjsSJr/giphy.gif'
+    ];
+
+    let currentBackground = 0;
+
+    // Fungsi untuk mengganti latar belakang dengan gif baru
+    function changeBackground() {
+      currentBackground = (currentBackground + 1) % backgroundGifs.length;
+      const newBackground = backgroundGifs[currentBackground];
+      backgroundAnimation.style.backgroundImage = `url('${newBackground}')`;
+    }
+
+    // Event listener untuk tombol "Lanjut"
+    nextBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+      $(card1).removeClass('active animate__fadeIn').addClass('animate__fadeOut');
+      setTimeout(function () {
+        $(card1).hide();
+        $(card2).show().addClass('active animate__fadeIn');
+      }, 1000);
+    });
+
+    nextBtnToCard3.addEventListener('click', function (event) {
+      event.preventDefault();
+      $(card2).removeClass('active animate__fadeIn').addClass('animate__fadeOut');
+      setTimeout(function () {
+        $(card2).hide();
+        $(card3).show().addClass('active animate__fadeIn');
+      }, 1000);
+    });
+
+    nextBtnToCard4.addEventListener('click', function (event) {
+      event.preventDefault();
+      $(card3).removeClass('active animate__fadeIn').addClass('animate__fadeOut');
+      setTimeout(function () {
+        $(card3).hide();
+        $(card4).show().addClass('active animate__fadeIn');
+      }, 1000);
+    });
+
+    nextBtnToCard5.addEventListener('click', function (event) {
+      event.preventDefault();
+      $(card4).removeClass('active animate__fadeIn').addClass('animate__fadeOut');
+      setTimeout(function () {
+        $(card4).hide();
+        $(card5).show().addClass('active animate__fadeIn');
+      }, 1000);
+    });
+
+    nextBtnMain.addEventListener('click', function (event) {
+      event.preventDefault();
+      $(card5).removeClass('active animate__fadeIn').addClass('animate__fadeOut');
+      setTimeout(function () {
+        $(card5).hide();
+        $(cardMain).show().addClass('active animate__fadeIn');
+      }, 1000);
+    });
+
+    // Event listener untuk tombol "Kembali"
+    backBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+      $(card2).removeClass('active animate__fadeIn').addClass('animate__fadeOut');
+      setTimeout(function () {
+        $(card2).hide();
+        $(card1).show().addClass('active animate__fadeIn');
+      }, 1000);
+    });
+
+    // Event listener untuk tombol "Kembali"
+    backBtnToCard2.addEventListener('click', function (event) {
+      event.preventDefault();
+      $(card3).removeClass('active animate__fadeIn').addClass('animate__fadeOut');
+      setTimeout(function () {
+        $(card3).hide();
+        $(card2).show().addClass('active animate__fadeIn');
+      }, 1000);
+    });
+
+    // Event listener untuk tombol "Kembali"
+    backBtnToCard3.addEventListener('click', function (event) {
+      event.preventDefault();
+      $(card4).removeClass('active animate__fadeIn').addClass('animate__fadeOut');
+      setTimeout(function () {
+        $(card4).hide();
+        $(card3).show().addClass('active animate__fadeIn');
+      }, 1000);
+    });
+
+    // Event listener untuk tombol "Kembali"
+    backBtnToCard4.addEventListener('click', function (event) {
+      event.preventDefault();
+      $(card5).removeClass('active animate__fadeIn').addClass('animate__fadeOut');
+      setTimeout(function () {
+        $(card5).hide();
+        $(card4).show().addClass('active animate__fadeIn');
+      }, 1000);
+    });
+
+
+    // Event listener untuk tombol "Kembali"
+    backBtnToCard5.addEventListener('click', function (event) {
+      event.preventDefault();
+      $(cardMain).removeClass('active animate__fadeIn').addClass('animate__fadeOut');
+      setTimeout(function () {
+        $(cardMain).hide();
+        $(card5).show().addClass('active animate__fadeIn');
+      }, 1000);
+    });
+
+
+    // Event listener untuk tombol "Minimize"
+    minimizeBtns.forEach(function (minimizeBtn) {
+      minimizeBtn.addEventListener('click', function (event) {
+        event.preventDefault();
+        $(card1).removeClass('active animate__fadeIn').addClass('animate__fadeOut');
+        $(card2).removeClass('active animate__fadeIn').addClass('animate__fadeOut');
+      });
+    });
+
+    // Event listener untuk tombol "Tab"
+    tabBtnShowTab.addEventListener('click', function (event) {
+      event.preventDefault();
+      $(card1).removeClass('animate__fadeOut').show().removeClass('active');
+      // $('.background-animation').show();
+    });
+
+    // Event listener untuk mengganti latar belakang saat tombol di pojok kiri atas diklik
+    tabBtn.addEventListener('click', changeBackground);
+  </script>
+
+  <!-- Function play musik -->
+  <script>
+    // Ambil elemen-elemen yang diperlukan
+    const playBtn = document.getElementById('playBtn');
+    const audioPlayer = document.getElementById('audioPlayer');
+
+    // Fungsi untuk memainkan atau menghentikan audio
+    function toggleAudio() {
+      if (audioPlayer.paused) {
+        audioPlayer.play();
+        playBtn.classList.remove('fa-play');
+        playBtn.classList.add('fa-pause');
+      } else {
+        audioPlayer.pause();
+        playBtn.classList.remove('fa-pause');
+        playBtn.classList.add('fa-play');
+      }
+    }
+
+    // Event listener untuk tombol play/pause audio
+    playBtn.addEventListener('click', toggleAudio);
+
+
+  </script>
+
+
+  <!-- Function khusus -->
+  <script>
+    // Ambil elemen yang diperlukan
+    const openCardBtn = document.getElementById('openCardBtn');
+
+    // Fungsi untuk menampilkan tombol "Open Card 1"
+    function showOpenCardBtn() {
+      openCardBtn.style.display = 'block';
+    }
+
+    // Fungsi untuk menyembunyikan tombol "Open Card 1"
+    function hideOpenCardBtn() {
+      openCardBtn.style.display = 'none';
+    }
+
+    // Event listener untuk tombol "Minimize" pada Card 1
+    minimizeBtns[0].addEventListener('click', showOpenCardBtn);
+
+    // Event listener untuk tombol "Open Card 1"
+    openCardBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+      showCard1();
+      hideOpenCardBtn();
+    });
+
+    // Fungsi untuk menampilkan Card 1
+    function showCard1() {
+      $(card2).removeClass('active animate__fadeIn').addClass('animate__fadeOut');
+      setTimeout(function () {
+        $(card2).hide();
+        $(card1).show().addClass('active animate__fadeIn');
+      }, 1000);
+    }
+  </script>
+</body>
+
+</html>

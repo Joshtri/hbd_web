@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main Menu</title>
+  <link rel="shortcut icon" href="/328145494_1134147813922467_4375431707210221288_n.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navbar Styles */
+    nav {
+      background-color: #333;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      /* To align logo and links */
+      align-items: center;
+      height: 60px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      margin-left: auto;
+      /* Align links to the left */
+    }
+
+    nav li {
+      margin: 0 10px;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      position: relative;
+      /* Relative positioning for ::after */
+      font-size: 15px;
+      /* Ukuran font diubah menjadi 12px */
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: rgb(68, 68, 97);
+      transition: width 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #555;
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    /* Animation Effect */
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounceLogo {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(-20px);
+      }
+
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .logo {
+      width: 40px;
+      margin-left: 20px;
+      animation: bounceLogo 2s infinite;
+      /* Animasi bounce untuk logo */
+    }
+
+    .logo-title {
+      font-size: 13px;
+      color: white;
+      margin-left: 10px;
+      animation: bounceLogo 2s infinite;
+      /* Animasi bounce untuk judul logo */
+    }
+
+    /* Additional Styles for Quote Template */
+    .quote-container {
+      width: 80%;
+      margin: 50px auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .quote-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .quote-content i {
+      font-size: 24px;
+    }
+
+    .quote-content p {
+      margin: 10px 0;
+    }
+
+    .quote-author {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #888;
+    }
+
+    /* Additional Styles for Photo Gallery */
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 10px;
+      justify-items: center;
+      margin-top: 30px;
+    }
+
+    .photo-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .photo-card img {
+      width: 60%;
+      height: auto;
+
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .photo-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .photo-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .photo-card:hover .photo-overlay {
+      opacity: 1;
+    }
+
+    .photo-overlay p {
+      font-size: 16px;
+      text-align: center;
+    }
+
+    /* Animation Effect */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .photo-card:nth-child(1) .photo-overlay {
+      animation: fadeIn 0.5s;
+    }
+
+    .photo-card:nth-child(2) .photo-overlay {
+      animation: fadeIn 1s;
+    }
+
+    .photo-card:nth-child(3) .photo-overlay {
+      animation: fadeIn 1.5s;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 20px;
+      width: 70%;
+      border-radius: 4px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+
+    /* Add more animation styles for additional photo-cards if needed */
+
+      /* Add the fade-in effect */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Apply the fade-in effect to the body with the specified class */
+  body.fade-in-effect {
+    animation: fadeIn 1s ease-in;
+  }
+
+  </style>
+
+</head>
+
+<body class="fade-in-effect">
+  <audio id="audioPlayer" autoplay src="/Happy Birthday_kor.mp3" type="audio/mpeg"></audio>
+  <nav>
+    <div>
+      <img class="logo" src="/328145494_1134147813922467_4375431707210221288_n.jpg" alt="Logo">
+    </div>
+    <h1 class="logo-title">Tesa Birthday</h1>
+    <ul>
+      <li><a href="#beranda"><i class="fa-solid fa-house">&nbsp;</i>Beranda</a></li>
+      <li><a href="#galery"><i class="fa-solid fa-images">&nbsp;</i>Galeri</a></li>
+      <li><a href="/index.html"><i class="fa-solid fa-door-open">&nbsp;</i>Keluar</a></li>
+    </ul>
+  </nav>
+
+  <!-- Add your content below -->
+  <section id="beranda" class="mt-5 pt-5" style="height: 100vh; background-color: #f2f2f2;">
+    <!-- Quote Template -->
+    <div class="quote-container">
+      <div class="quote-content">
+        <i class="fa-solid fa-quote-left"></i>
+        <p>Here's another year of laughing together, messing up together, and making it together</p>
+        <i class="fa-solid fa-quote-right"></i>
+      </div>
+      <div class="quote-author">- Anonymous</div>
+    </div>
+    <!-- Button Triggering Modal -->
+    <div class="text-center">
+      <button type="button" class="btn btn-danger" onclick="showModal()">KADO</button>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="kadoModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h4>isi kuis dulu dong baru dapat kado :)</h4>
+      <form id="quizForm">
+        <div class="question">
+          <p>1. Apa makanan kesukaan Yostri?</p>
+          <label><input type="radio" name="question1" value="mie_ayam">Mie Ayam</label>
+          <label><input type="radio" name="question1" value="burger_mcd">Burger MCD</label>
+          <label><input type="radio" name="question1" value="nasi goreng">Nasi goreng Sapi Lada Hitam</label>
+          <label><input type="radio" name="question1" value="ayam_bakar">Ayam Bakar</label>
+        </div>
+        <!-- Add more quiz questions with radio buttons as needed -->
+        <div class="text-center">
+          <button type="button" onclick="submitQuiz()">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Correct Answer Modal -->
+  <div id="correctAnswerModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Yeyyy! Lu tau b pu makanan kesukaan 😅 </h2>
+      <p>oke, jadi kadonya ada di.....sini</p>
+
+      <a href="/utama.html" class="btn btn-dark">Tutup</a>
+    </div>
+  </div>
+
+
+
+  <!-- Modal for Confirmation
+  <div id="confirmationModal"
+    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center;">
+    <div style="background-color: #fff; padding: 20px; border-radius: 4px;">
+      <p>Apakah Anda yakin ingin keluar?</p>
+      <button onclick="closeModalConfirm()">Tidak</button>
+      <button id="yesButton">
+        <a href="/intro.html">Ya</a>
+      </button>
+    </div>
+  </div> -->
+
+  <script>
+    // Function to show the modal
+    function showModal() {
+      const modal = document.getElementById("kadoModal");
+      modal.style.display = "block";
+    }
+
+        // Function to show the correct answer modal
+        function showCorrectAnswerModal() {
+      const correctAnswerModal = document.getElementById("correctAnswerModal");
+      correctAnswerModal.style.display = "block";
+    }
+    
+    // Function to close the modal
+    function closeModal() {
+      const modal = document.getElementById("kadoModal");
+      modal.style.display = "none";
+    }
+
+
+
+
+
+    // Function to submit the quiz and display results
+    function submitQuiz() {
+      const form = document.getElementById("quizForm");
+      const questions = form.getElementsByClassName("question");
+      let score = 0;
+
+      for (let i = 0; i < questions.length; i++) {
+        const inputs = questions[i].getElementsByTagName("input");
+        for (let j = 0; j < inputs.length; j++) {
+          if (inputs[j].checked) {
+            // Check the correct answers and update the score
+            if (inputs[j].value === "mie_ayam" && i === 0) {
+              score++;
+              showCorrectAnswerModal(); // Show correct answer modal for question 1
+            }
+            // Add more correct answers for additional questions if needed
+          }
+        }
+      }
+
+      // Display the score
+      alert(`Skor benar: ${score} dari ${questions.length} pertanyaan`);
+    }
+
+
+  </script>
+
+</body>
+
+</html>
